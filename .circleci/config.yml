@@ -18,6 +18,12 @@ jobs:
     steps:
       - checkout
       - run: echo "world"
+  print_name:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: echo $STATE_YOUR_NAME
 workflows:
   # Name the workflow "welcome"
   welcome:
@@ -31,5 +37,6 @@ workflows:
       - print_world:
           requires:
             - print_hello
+      - print_name
 
 
